@@ -10,7 +10,8 @@ import { Router } from "@angular/router";
 export class LoginPage implements OnInit {
   constructor(private authService: AuthService, private router: Router) {}
 
-  loginUser() {
+  loginUser(form) {
+    console.log("form data is: ", form);
     this.authService.login();
     this.router.navigate(["home"]);
   }
