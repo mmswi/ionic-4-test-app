@@ -1,9 +1,17 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class StarWarsService {
+  constructor(private http: HttpClient) {}
 
-  constructor() { }
+  getPeople() {
+    return this.http.get("https://swapi.co/api/people");
+  }
+
+  getPerson(id) {
+    return this.http.get(`https://swapi.co/api/people/${id}`);
+  }
 }
