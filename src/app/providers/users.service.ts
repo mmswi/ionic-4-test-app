@@ -25,6 +25,7 @@ export class UsersService {
   getUsers(): Observable<Users[]> {
     return this.http.get<Users[]>(this.url, this.httpOptions).pipe(
       map(response => {
+        // sending only the needed data to the component
         return response.map(user => new UserModel(user));
       }),
       catchError(this.handleError<Users[]>("getUsers", []))
