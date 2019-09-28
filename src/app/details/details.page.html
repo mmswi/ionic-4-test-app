@@ -2,26 +2,69 @@
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
+      <ion-back-button></ion-back-button>
     </ion-buttons>
     <ion-title>
-      List
+      Logo
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-item *ngFor="let item of items">
-      <ion-icon [name]="item.icon" slot="start"></ion-icon>
-      {{item.title}}
-      <div class="item-note" slot="end">
-        {{item.note}}
-      </div>
-    </ion-item>
-  </ion-list>
-  <!--
-    <div *ngIf="selectedItem" padding>
-      You navigated here from <b>{{selectedItem.title }}</b>
-    </div>
-  -->
+  <ion-item>
+    <ion-thumbnail slot="start">
+      <img src="/assets/images/{{user.picture}}" alt="{{user?.name}} picture">
+    </ion-thumbnail>
+    <ion-label><h1>{{user?.name}}</h1></ion-label>
+  </ion-item>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <div>
+          <h2>Address: </h2>
+        </div>
+      </ion-col>
+      <ion-col>
+        <div>
+          <p>{{user?.address?.street}}, {{user?.address?.suite}}, {{user?.address?.city}}</p>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div>
+          <h2>Phone: </h2>
+        </div>
+      </ion-col>
+      <ion-col>
+        <div>
+          <p>{{user?.phone}}</p>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div>
+          <h2>Working @: </h2>
+        </div>
+      </ion-col>
+      <ion-col>
+        <div>
+          <p>{{user?.company?.name}}</p>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div>
+          <h2>Email: </h2>
+        </div>
+      </ion-col>
+      <ion-col>
+        <div>
+          <p>{{user?.email}}</p>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
