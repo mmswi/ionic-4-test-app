@@ -13,7 +13,7 @@ export class HomePage {
 
   getRandomPictureName() {
     // returns a random picture name
-    return `picture-${Math.floor(Math.random() * 6) + 1}`;
+    return `picture-${Math.floor(Math.random() * 6) + 1}.jpg`;
   }
 
   ngOnInit(): void {
