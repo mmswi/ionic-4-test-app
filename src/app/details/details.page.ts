@@ -19,9 +19,12 @@ export class DetailsPage implements OnInit {
     // Note - this won't work on page refresh. For this, a service would be a better option
     this.route.queryParams.subscribe(() => {
       const routeState = this.router.getCurrentNavigation().extras.state;
-      if (routeState) {
-        this.user = { picture: routeState.userPicture };
-      }
+      let picture = "";
+      //  adding this fallback just for testing purposes
+      routeState
+        ? (picture = routeState.userPicture)
+        : (picture = "picture-1.jpg");
+      this.user = { picture };
     });
   }
 
