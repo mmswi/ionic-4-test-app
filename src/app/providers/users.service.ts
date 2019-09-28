@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Observable, of } from "rxjs";
+import { Observable, of, throwError } from "rxjs";
 import { catchError, map } from "rxjs/operators";
 import { Users } from "./helpers/users.interface";
 import { UserModel } from "./helpers/users.model";
@@ -31,9 +31,14 @@ export class UsersService {
     );
   }
 
-  getUserById(id: number) {
-    return this.http
-      .get(`${this.url}/${id}`)
-      .pipe(catchError(this.handleError<any>(`getUser by id ${id}`, [])));
+  getUserById(id: number): Observable<Object> {
+    return this.http.get(`${this.url}/${id}`).pipe(
+      catchError(err => {
+        // handling the error in the console
+        this.handleError<any>(`getUser by id ${id}`, [])(err);
+        // throwing the error also to the component to be handled on the details page
+        return throwError(err);
+      })
+    );
   }
 }
