@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
+import { userInfo } from "os";
 
 @Component({
   selector: "app-home",
@@ -18,7 +19,11 @@ export class HomePage {
 
   ngOnInit(): void {
     if (this.route.snapshot.data["routeData"]) {
-      this.users = this.route.snapshot.data["routeData"];
+      const apiUsers = this.route.snapshot.data["routeData"];
+      this.users = apiUsers.map(user => ({
+        ...user,
+        picture: this.getRandomPictureName()
+      }));
       console.log("this.users: ", this.users);
     }
   }
