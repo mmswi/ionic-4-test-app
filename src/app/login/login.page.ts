@@ -14,6 +14,7 @@ export class LoginPage implements OnInit {
     console.log("form data is: ", form);
     this.authService.login();
     this.router.navigate(["home"]);
+    form.reset();
   }
 
   ngOnInit() {}
