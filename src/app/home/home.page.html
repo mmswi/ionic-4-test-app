@@ -10,16 +10,14 @@
 </ion-header>
 
 <ion-content>
-    <ion-card *ngFor="let user of users" class="welcome-card">
-      <div routerLink="/details/{{user.id}}">
-        <img src="/assets/images/{{user.picture}}" alt="{{user.name}} picture" />
-        <ion-card-header>
-          <ion-card-subtitle>{{user.email}}</ion-card-subtitle>
-          <ion-card-title>{{user.name}}</ion-card-title>
-        </ion-card-header>
-      </div>
+    <ion-card *ngFor="let user of users" class="welcome-card" (click)='handleUserClick($event.target, {id: user.id, picture: user.picture})'>
+      <img src="/assets/images/{{user.picture}}" alt="{{user.name}} picture" />
+      <ion-card-header>
+        <ion-card-subtitle>{{user.email}}</ion-card-subtitle>
+        <ion-card-title>{{user.name}}</ion-card-title>
+      </ion-card-header>
       <ion-card-content>
-        <p>Find my portofolio on <a href="http://{{user.website}}">{{user.website}}</a></p>
+        <p>Find my portofolio on <a href="http://{{user.website}}" (click)='$event.preventDefault()'>{{user.website}}</a></p>
       </ion-card-content>
     </ion-card>
 </ion-content>

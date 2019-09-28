@@ -23,7 +23,7 @@ export class HomePage implements OnInit {
 
   // currently handles only href detection
   // for other buttons on the card, I can use other methods with $event.stopPropagation()
-  // to prevend handleUserClick calling
+  // to prevent handleUserClick calling
   handleUserClick(target: EventTarget, payload): void {
     console.log("user clickeddd");
     //  handle the external link in the ionic card
